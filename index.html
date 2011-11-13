@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+	<title>Friend Graph</title>
+	<meta charset="utf-8">
+	<script src="d3/d3.min.js"></script>
+	<script src="d3/d3.geom.min.js"></script>
+	<script src="d3/d3.layout.min.js"></script>
+	<link type="text/css" rel="stylesheet" href="friendgraph.css">
+</head>
+<body>
+	<div id="graph">
+		<svg>
+			<clipPath id="circle-clip">
+				<circle cx="8" cy="8" r="8">
+			</clipPath>
+			<g id="tooltip">
+				<text class="shadow" x="18" y=".6em"></text>
+				<text class="name" x="18" y=".6em"></text>
+			</g>
+		</svg>
+	</div>
+	<div id="fb-root"></div>
+	<button id="go_btn">DO IT</button>
+	<div class="fb-like" data-href="http://www.lehnerstudios.com/friendgraph/" data-send="false" data-width="400" data-show-faces="false" data-font="lucida grande"></div>
+	<div id="loader">Stalking...</div>
+	<script src="//connect.facebook.net/en_US/all.js"></script>
+	<script src="friendgraph.js"></script>
+</body>
+</html>
