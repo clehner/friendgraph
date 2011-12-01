@@ -83,8 +83,9 @@ var force = d3.layout.force()
 var height, width;
 
 function resizeGraph() {
-	width = svg.offsetWidth;
-	height = svg.offsetHeight;
+	if (!data) return;
+	width = window.innerWidth; //svg.offsetWidth;
+	height = window.innerHeight; //svg.offsetHeight;
 	force.size([width, height])
 		.resume();
 }
