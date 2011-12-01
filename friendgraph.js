@@ -63,7 +63,11 @@ function getFriendData() {
 		}
 	}, function (response) {
 		loader.style("display", "none");
-		gotDataFB([response[0].fql_result_set, response[1].fql_result_set]);
+		if (response[0]) {
+			gotDataFB([response[0].fql_result_set, response[1].fql_result_set]);
+		} else if (reponse.error_code == 18) {
+			error("Too many people are using the app right now. Try again tomorrow.");
+		}
 	});
 }
 
