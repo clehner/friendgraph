@@ -22,6 +22,12 @@ body {
 	vertical-align: middle;
 }
 
+#error {
+	color: red;
+}
+
+/* Graph */
+
 .node circle {
 	stroke: #fff;
 	stroke-width: 1.5px;

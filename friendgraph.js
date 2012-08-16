@@ -27,12 +27,12 @@ function loadDataLocal() {
 }
 
 function saveDataLocal() {
-	if (!data || !window.localStorage) console.log('asdasd?>'); //return;
+	if (!data || !window.localStorage) return;
 	localStorage.friendgraphdata = JSON.stringify(data);
 	//console.log(localStorage.friendgraphdata.length);
 }
 
-//setTimeout(loadDataLocal, 10);
+setTimeout(loadDataLocal, 10);
 
 //d3.json("myfriends.json", gotDataFB);
 
@@ -50,6 +50,10 @@ var goBtn = d3.select("#go_btn").on("click", function () {
 	}
 });
 
+function error(msg) {
+	d3.select("#error").text(msg);
+}
+
 function getFriendData() {
 	loader.style("display", "block");
 	FB.api({
@@ -65,7 +69,7 @@ function getFriendData() {
 		loader.style("display", "none");
 		if (response[0]) {
 			gotDataFB([response[0].fql_result_set, response[1].fql_result_set]);
-		} else if (reponse.error_code == 18) {
+		} else if (response.error_code == 18) {
 			error("Too many people are using the app right now. Try again tomorrow.");
 		}
 	});
@@ -94,7 +98,7 @@ window.addEventListener("resize", resizeGraph, false);
 function gotDataFB(d) {
 	data = d;
 	goBtn.remove();
-	//saveDataLocal();
+	saveDataLocal();
 	graph();
 }
 
@@ -119,7 +123,7 @@ function graph() {
 	var profiles = data[0];
 	var connections = data[1];
 
-	//setTimeout(saveDataLocal, 15000);
+	setTimeout(saveDataLocal, 15000);
 
 	//profiles = profiles.slice(0, 10);
 
